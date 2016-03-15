@@ -10,4 +10,8 @@ import es.ulpgc.eite.framework.core.screen.I_ScreenPresenter;
  */
 public class PintoresView extends AndroidScreenView implements I_PintoresView{
 
+    @Override
+    public void setPintoresLayout() {
+
+    }
 }

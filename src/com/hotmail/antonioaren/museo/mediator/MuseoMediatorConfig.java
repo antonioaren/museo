@@ -10,7 +10,6 @@ import es.ulpgc.eite.framework.core.mediator.I_MediatorSingleton;
 import es.ulpgc.eite.framework.core.mediator.MediatorConfig;
 import es.ulpgc.eite.framework.core.mediator.MediatorScreen;
 import es.ulpgc.eite.framework.core.mediator.MediatorTransition;
-import es.ulpgc.eite.framework.core.screen.I_ScreenModel;
 
 /**
  * Created by PedroAntonio on 14/03/2016.
@@ -41,7 +40,7 @@ public class MuseoMediatorConfig extends MediatorConfig {
 
     private void setMuseoCollection() {
         getTransitions().add(new MediatorTransition(PintoresView.class,
-                CuadrosView.class, MuseoMediatorCode.EDIT));
+                CuadrosView.class, MuseoMediatorCode.VIEW));
     }
 
 }

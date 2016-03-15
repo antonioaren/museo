@@ -8,9 +8,13 @@ import es.ulpgc.eite.framework.core.screen.I_ScreenView;
  * Created by PedroAntonio on 14/03/2016.
  */
 public class CuadrosPresenter extends AndroidScreenPresenter implements I_CuadrosPresenter {
+
+    private I_CuadrosView getCuadrosView() {
+       return (I_CuadrosView) getScreenView();
+    }
     @Override
     public void createScreen() {
-
+        getCuadrosView().setLayout();
     }
 
     @Override
