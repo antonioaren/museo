@@ -14,7 +14,7 @@ public class PintoresModel extends AndroidScreenModel implements I_PintoresModel
     private I_PintoresPresenter getPintoresPresenter(){
         return (I_PintoresPresenter) getScreenPresenter();
     }
-
+//Empecemos con DataBase. prueba1 para cualquier error.
 
 
     public int getPosition() {
