@@ -22,6 +22,8 @@ public class PintoresPresenter extends AndroidScreenPresenter implements I_Pinto
 
     @Override
     public void createScreen() {
+        debug("createScreen");
+
         getPintoresView().setPintoresLayout();
     }
 

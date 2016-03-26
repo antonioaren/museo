@@ -7,4 +7,8 @@ import es.ulpgc.eite.framework.android.AndroidScreenModel;
  */
 public class PintoresModel extends AndroidScreenModel implements I_PintoresModel {
 
+    private I_PintoresPresenter getPintoresPresenter(){
+        return (I_PintoresPresenter) getScreenPresenter();
+    }
+
 }

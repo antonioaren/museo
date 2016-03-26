@@ -8,6 +8,6 @@ import es.ulpgc.eite.framework.core.screen.I_ScreenView;
  */
 public class MuseoMediatorCode extends MediatorCode {
 
-    public static final int VIEW = 904;
+    public static final int CLICK = 904;
 
 }

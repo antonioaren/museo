@@ -30,17 +30,20 @@ public class MuseoMediatorConfig extends MediatorConfig {
         setMuseoTransitionCollection();
     }
 
-    private void setMuseoTransitionCollection() {
+    private void setMuseoCollection() {
         getScreens().add(new MediatorScreen(PintoresView.class,
                 PintoresPresenter.class, PintoresModel.class));
+
         getScreens().add(new MediatorScreen(CuadrosView.class,
                 CuadrosPresenter.class, CuadrosModel.class));
-
     }
 
-    private void setMuseoCollection() {
+
+    private void setMuseoTransitionCollection() {
         getTransitions().add(new MediatorTransition(PintoresView.class,
-                CuadrosView.class, MuseoMediatorCode.VIEW));
+                CuadrosView.class, MuseoMediatorCode.CLICK));
     }
+
+
 
 }
