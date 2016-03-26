@@ -32,10 +32,10 @@ public class MuseoMediatorConfig extends MediatorConfig {
 
     private void setMuseoCollection() {
         getScreens().add(new MediatorScreen(PintoresView.class,
-                PintoresPresenter.class, PintoresModel.class));
+                PintoresPresenter.class, PintoresModel.class, null));
 
         getScreens().add(new MediatorScreen(CuadrosView.class,
-                CuadrosPresenter.class, CuadrosModel.class));
+                CuadrosPresenter.class, CuadrosModel.class, null));
     }
 
 
