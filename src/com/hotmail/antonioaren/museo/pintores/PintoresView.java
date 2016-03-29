@@ -89,6 +89,7 @@ public class PintoresView extends AndroidScreenView implements I_PintoresView {
 
     @Override
     public void setListPosition(int position){
+        setPosition(position);
         getlist().setSelection(getPosition());
     }
 
@@ -100,22 +101,26 @@ public class PintoresView extends AndroidScreenView implements I_PintoresView {
 
     @Override
     public void setPintoresList(){
+        debug("setPintoresList");
         setlist((ListView) findViewById(getListView()));
 
     }
     @Override
     public void setMuseoAdapter(){
+        debug("setMuseoAdapter");
         setAdapter(new MuseoAdapter(this, getRowLayout()));
 
     }
     @Override
     public void setMuseoListAdapter(){
+        debug("setMuseoListAdapter");
         getlist().setAdapter(getAdapter());
 
     }
 
     @Override
     public void setMuseoListListener(){
+        debug("setMuseoListListenerr");
         getlist().setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
