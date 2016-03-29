@@ -5,4 +5,5 @@ package com.hotmail.antonioaren.museo.pintores;
  */
 public interface I_PintoresPresenter {
 
+    void itemListenedClicked();
 }

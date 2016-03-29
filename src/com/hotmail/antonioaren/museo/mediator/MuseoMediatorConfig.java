@@ -3,6 +3,7 @@ package com.hotmail.antonioaren.museo.mediator;
 import com.hotmail.antonioaren.museo.cuadros.CuadrosModel;
 import com.hotmail.antonioaren.museo.cuadros.CuadrosPresenter;
 import com.hotmail.antonioaren.museo.cuadros.CuadrosView;
+import com.hotmail.antonioaren.museo.database.DatabaseMuseo;
 import com.hotmail.antonioaren.museo.pintores.PintoresModel;
 import com.hotmail.antonioaren.museo.pintores.PintoresPresenter;
 import com.hotmail.antonioaren.museo.pintores.PintoresView;
@@ -32,7 +33,7 @@ public class MuseoMediatorConfig extends MediatorConfig {
 
     private void setMuseoCollection() {
         getScreens().add(new MediatorScreen(PintoresView.class,
-                PintoresPresenter.class, PintoresModel.class, null));
+                PintoresPresenter.class, PintoresModel.class, DatabaseMuseo.class));
 
         getScreens().add(new MediatorScreen(CuadrosView.class,
                 CuadrosPresenter.class, CuadrosModel.class, null));

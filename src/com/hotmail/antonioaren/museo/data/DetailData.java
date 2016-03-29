@@ -55,4 +55,9 @@ public class DetailData {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return getLabel();
+    }
 }

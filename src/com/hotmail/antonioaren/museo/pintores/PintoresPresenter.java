@@ -1,5 +1,6 @@
 package com.hotmail.antonioaren.museo.pintores;
 
+import com.hotmail.antonioaren.museo.mediator.MuseoMediatorCode;
 import es.ulpgc.eite.framework.android.AndroidScreenPresenter;
 import es.ulpgc.eite.framework.core.screen.I_ScreenState;
 import es.ulpgc.eite.framework.core.screen.I_ScreenView;
@@ -19,12 +20,23 @@ public class PintoresPresenter extends AndroidScreenPresenter implements I_Pinto
         return (I_PintoresModel) getScreenModel();
     }
 
+    @Override
+    public void itemListenedClicked() {
+        getPintoresModel().setPosition(getPintoresView().getListPosition());
+        //startNextScreenWithFinish(MuseoMediatorCode.CLICK, false);
+    }
+
 
     @Override
     public void createScreen() {
         debug("createScreen");
 
         getPintoresView().setPintoresLayout();
+        getPintoresView().setPintoresList();
+        getPintoresView().setMuseoAdapter();
+        getPintoresView().setMuseoListAdapter();
+        getPintoresView().setMuseoListListener();
+
     }
 
     @Override
@@ -34,6 +46,8 @@ public class PintoresPresenter extends AndroidScreenPresenter implements I_Pinto
 
     @Override
     public void resumeScreen() {
+        getPintoresView().setPintoresCollection(getPintoresModel().getCollection());
+        getPintoresView().setListPosition(getPintoresModel().getPosition());
 
     }
 
@@ -61,4 +75,6 @@ public class PintoresPresenter extends AndroidScreenPresenter implements I_Pinto
     public I_ScreenState getNextState(Class<? extends I_ScreenView> aClass, int i) {
         return null;
     }
+
+
 }
