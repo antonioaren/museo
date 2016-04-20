@@ -1,4 +1,4 @@
-package com.hotmail.antonioaren.museo.data;
+package com.hotmail.antonioaren.museo.cuadros.Detail.data;
 
 import org.droidpersistence.annotation.Column;
 import org.droidpersistence.annotation.PrimaryKey;
@@ -45,6 +45,8 @@ public class DetailData {
     }
 
     @Override
+    //Singletone para crear un objeto de tipo DetailData. Con esto controlamos que no haya mas objetos creados.
+    //Es decir un unico objeto para la clase.
     public boolean equals(Object obj) {
         if (obj instanceof DetailData){
             DetailData data = (DetailData) obj;

@@ -1,8 +1,9 @@
-package com.hotmail.antonioaren.museo.pintores;
+package com.hotmail.antonioaren.museo.pintores.Model;
 
-import android.provider.ContactsContract;
-import com.hotmail.antonioaren.museo.data.DetailData;
+
+import com.hotmail.antonioaren.museo.cuadros.Detail.data.DetailData;
 import com.hotmail.antonioaren.museo.database.I_MuseoDatabase;
+import com.hotmail.antonioaren.museo.pintores.Presenter.I_PintoresPresenter;
 import es.ulpgc.eite.framework.android.AndroidScreenModel;
 
 import java.util.List;
@@ -20,6 +21,8 @@ public class PintoresModel extends AndroidScreenModel implements I_PintoresModel
     private I_MuseoDatabase getMuseoDatabase(){
         return (I_MuseoDatabase) getScreenDatabase();
     }
+
+
     @Override
     public int getPosition() {
         return position;
@@ -52,6 +55,7 @@ public class PintoresModel extends AndroidScreenModel implements I_PintoresModel
 
     }
 
+    @Override
     public DetailData getData(){
         return getMuseoDatabase().getDataList().get(getPosition());
     }

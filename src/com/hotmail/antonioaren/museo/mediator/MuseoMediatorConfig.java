@@ -1,12 +1,12 @@
 package com.hotmail.antonioaren.museo.mediator;
 
-import com.hotmail.antonioaren.museo.cuadros.CuadrosModel;
-import com.hotmail.antonioaren.museo.cuadros.CuadrosPresenter;
-import com.hotmail.antonioaren.museo.cuadros.CuadrosView;
+import com.hotmail.antonioaren.museo.cuadros.Master.Model.CuadrosModel;
+import com.hotmail.antonioaren.museo.cuadros.Master.Presenter.CuadrosPresenter;
+import com.hotmail.antonioaren.museo.cuadros.Master.View.CuadrosView;
 import com.hotmail.antonioaren.museo.database.DatabaseMuseo;
-import com.hotmail.antonioaren.museo.pintores.PintoresModel;
-import com.hotmail.antonioaren.museo.pintores.PintoresPresenter;
-import com.hotmail.antonioaren.museo.pintores.PintoresView;
+import com.hotmail.antonioaren.museo.pintores.Model.PintoresModel;
+import com.hotmail.antonioaren.museo.pintores.Presenter.PintoresPresenter;
+import com.hotmail.antonioaren.museo.pintores.View.PintoresView;
 import es.ulpgc.eite.framework.core.mediator.I_MediatorSingleton;
 import es.ulpgc.eite.framework.core.mediator.MediatorConfig;
 import es.ulpgc.eite.framework.core.mediator.MediatorScreen;

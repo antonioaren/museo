@@ -1,4 +1,4 @@
-package com.hotmail.antonioaren.museo.cuadros;
+package com.hotmail.antonioaren.museo.cuadros.Master.View;
 
 import com.hotmail.antonioaren.museo.R;
 import es.ulpgc.eite.framework.android.AndroidScreenView;

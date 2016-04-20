@@ -1,6 +1,6 @@
-package com.hotmail.antonioaren.museo.pintores;
+package com.hotmail.antonioaren.museo.pintores.Model;
 
-import com.hotmail.antonioaren.museo.data.DetailData;
+import com.hotmail.antonioaren.museo.cuadros.Detail.data.DetailData;
 
 import java.util.List;
 
@@ -13,4 +13,6 @@ public interface I_PintoresModel {
     void setPosition(int pos);
 
     List<DetailData> getCollection();
+
+    DetailData getData();
 }

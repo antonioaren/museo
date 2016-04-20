@@ -1,4 +1,4 @@
-package com.hotmail.antonioaren.museo.cuadros;
+package com.hotmail.antonioaren.museo.cuadros.Master.Model;
 
 import es.ulpgc.eite.framework.android.AndroidScreenModel;
 

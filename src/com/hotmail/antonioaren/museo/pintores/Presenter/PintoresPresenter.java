@@ -1,6 +1,7 @@
-package com.hotmail.antonioaren.museo.pintores;
+package com.hotmail.antonioaren.museo.pintores.Presenter;
 
-import com.hotmail.antonioaren.museo.mediator.MuseoMediatorCode;
+import com.hotmail.antonioaren.museo.pintores.Model.I_PintoresModel;
+import com.hotmail.antonioaren.museo.pintores.View.I_PintoresView;
 import es.ulpgc.eite.framework.android.AndroidScreenPresenter;
 import es.ulpgc.eite.framework.core.screen.I_ScreenState;
 import es.ulpgc.eite.framework.core.screen.I_ScreenView;
@@ -20,23 +21,21 @@ public class PintoresPresenter extends AndroidScreenPresenter implements I_Pinto
         return (I_PintoresModel) getScreenModel();
     }
 
-    @Override
-    public void itemListenedClicked() {
-        getPintoresModel().setPosition(getPintoresView().getListPosition());
-        //startNextScreenWithFinish(MuseoMediatorCode.CLICK, false);
-    }
 
+    @Override
+    public void setListPosition(int position) { //al pulsar nos da la posicion de la lista!
+
+        getPintoresModel().setPosition(position);
+
+        debug("setListPosition","position",position);
+        debug("setListPosition","Data",getPintoresModel().getData());
+    }
 
     @Override
     public void createScreen() {
         debug("createScreen");
 
-        getPintoresView().setPintoresLayout();
-        getPintoresView().setPintoresList();
-        getPintoresView().setMuseoAdapter();
-        getPintoresView().setMuseoListAdapter();
-        getPintoresView().setMuseoListListener();
-
+        getPintoresView().setPintoresScreen();
     }
 
     @Override
@@ -75,6 +74,7 @@ public class PintoresPresenter extends AndroidScreenPresenter implements I_Pinto
     public I_ScreenState getNextState(Class<? extends I_ScreenView> aClass, int i) {
         return null;
     }
+
 
 
 }

@@ -1,5 +1,6 @@
-package com.hotmail.antonioaren.museo.cuadros;
+package com.hotmail.antonioaren.museo.cuadros.Master.Presenter;
 
+import com.hotmail.antonioaren.museo.cuadros.Master.View.I_CuadrosView;
 import es.ulpgc.eite.framework.android.AndroidScreenPresenter;
 import es.ulpgc.eite.framework.core.screen.I_ScreenState;
 import es.ulpgc.eite.framework.core.screen.I_ScreenView;

@@ -1,4 +1,4 @@
-package com.hotmail.antonioaren.museo.pintores;
+package com.hotmail.antonioaren.museo.pintores.View;
 
 
 import android.content.Context;
@@ -10,7 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.hotmail.antonioaren.museo.R;
-import com.hotmail.antonioaren.museo.data.DetailData;
+import com.hotmail.antonioaren.museo.cuadros.Detail.data.DetailData;
+import com.hotmail.antonioaren.museo.pintores.Presenter.I_PintoresPresenter;
 import es.ulpgc.eite.framework.android.AndroidScreenView;
 
 import java.util.List;
@@ -24,22 +25,8 @@ public class PintoresView extends AndroidScreenView implements I_PintoresView {
 
     private ListView _list;
     private MuseoAdapter _adapter;
-    private int _position;
 
-    @Override
-    public int getListPosition(){
-        return getPosition();
-    }
-
-
-    private int getPosition() {
-        return _position;
-    }
-
-    private void setPosition(int position) {
-       _position = position;
-    }
-
+    //Getter y Setter de ListView --------------------------------------------------------------------------------
     private ListView getlist() {
         return _list;
     }
@@ -48,6 +35,7 @@ public class PintoresView extends AndroidScreenView implements I_PintoresView {
         _list = list;
     }
 
+    //Getter y Setter del Adapter --------------------------------------------------------------------------------
     private MuseoAdapter getAdapter() {
         return _adapter;
     }
@@ -56,17 +44,32 @@ public class PintoresView extends AndroidScreenView implements I_PintoresView {
         _adapter = adapter;
     }
 
+    //----------------------------------------------------------------------------------------------------
+
     private I_PintoresPresenter getPintoresPresenter() {
         return (I_PintoresPresenter) getScreenPresenter();
     }
 
     @Override
-    public void setPintoresLayout() {
+    //Generalizamos mucho más la creación de pantallas
+    public void setPintoresScreen() {
+        setPintoresLayout();
+        setPintoresList();
+        setMuseoAdapter();
+        setMuseoListAdapter();
+        setMuseoListListener();
+
+    }
+
+    // Metodo para poner el primer Layout.
+
+    private void setPintoresLayout() {
 
         debug("setPintoresLayout");
         setContentView(getListLayout());
     }
 
+    //Optener Layout de la lista (recordad que son 2 Layout) el base, los datos y datos de cada celda.
     private int getListLayout(){
         return R.layout.pintores_view;
     }
@@ -79,71 +82,68 @@ public class PintoresView extends AndroidScreenView implements I_PintoresView {
         return R.id.listView;
     }
 
+    //Poner Colección de pintores que tenemos en nuestra lista.
     @Override
     public void setPintoresCollection(List<DetailData> collection){
+        debug("setPintoresCollection", "Collection", collection);
         getAdapter().clear();
         getAdapter().addAll(collection);
         getAdapter().notifyDataSetChanged();
 
     }
 
+    //Establecer posición en de la lista. Mediante la selección, allí tendremos la posición de lo seleccionado.
     @Override
     public void setListPosition(int position){
-        setPosition(position);
-        getlist().setSelection(getPosition());
+        debug("setListPosition", "Position", position);
+        //setPosition(position);
+        getlist().setSelection(position);
     }
 
 
-//    @Override
-//    public void setListPosition(){
-//        getlist().setSelection(getPosition());
-//    }
+    //Poner los pintores setList findbyId (getListView())
 
-    @Override
-    public void setPintoresList(){
+    private void setPintoresList(){
         debug("setPintoresList");
         setlist((ListView) findViewById(getListView()));
 
     }
-    @Override
-    public void setMuseoAdapter(){
+
+    private void setMuseoAdapter(){
         debug("setMuseoAdapter");
         setAdapter(new MuseoAdapter(this, getRowLayout()));
 
     }
-    @Override
-    public void setMuseoListAdapter(){
+
+    private void setMuseoListAdapter(){
         debug("setMuseoListAdapter");
         getlist().setAdapter(getAdapter());
 
     }
 
-    @Override
-    public void setMuseoListListener(){
-        debug("setMuseoListListenerr");
+
+    private void setMuseoListListener(){
+        debug("setMuseoListListener");
         getlist().setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(
+                    AdapterView<?> parent, View view, int position, long id) {
+                //debug("setMuseoListListenerr","",getAdapter().getItem(position));
 
-                itemListenerClicked(position);
+                //Obtiene del presentador la lista y su posicion.
+                getPintoresPresenter().setListPosition(position);
 
             }
         });
     }
 
-    private void itemListenerClicked(int position) {
-        setPosition(position);
-        getPintoresPresenter().itemListenedClicked();
-
-
-    }
 
     private class MuseoAdapter extends ArrayAdapter<DetailData>{
         private int _pintoresRowLayout;
         private PintoresView _pintoresListView;
 
-
+        //Getter y Setter de los atributos
         private PintoresView _getpintoresListView() {
             return _pintoresListView;
         }
@@ -160,7 +160,7 @@ public class PintoresView extends AndroidScreenView implements I_PintoresView {
             _pintoresRowLayout = layout;
         }
 
-
+        //Declaramos el Adaptador.
 
         public MuseoAdapter(PintoresView _view, int _layout) {
             super(_view, _layout);
@@ -170,6 +170,8 @@ public class PintoresView extends AndroidScreenView implements I_PintoresView {
         }
 
         @Override
+        //El adaparador es necesario para adaptar lo que android tiene por defecto
+        //Es decir, mezclar con el servicio que te da Android con el que nosontros hemos diseñado.
         public View getView(int position, View rowView, ViewGroup parent) {
 
             LayoutInflater inflater = (LayoutInflater)
@@ -182,8 +184,6 @@ public class PintoresView extends AndroidScreenView implements I_PintoresView {
             TextView titleView = (TextView) rowView.findViewById(R.id.lbl_title);
             titleView.setText(data.toString());
             return rowView;
-
-
         }
     }
 }

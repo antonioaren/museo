@@ -2,7 +2,7 @@ package com.hotmail.antonioaren.museo.database;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.SystemClock;
-import com.hotmail.antonioaren.museo.data.DetailData;
+import com.hotmail.antonioaren.museo.cuadros.Detail.data.DetailData;
 import es.ulpgc.eite.framework.android.AndroidScreenDatabase;
 import es.ulpgc.eite.framework.android.I_AndroidMediatorSingleton;
 import com.hotmail.antonioaren.museo.R;
