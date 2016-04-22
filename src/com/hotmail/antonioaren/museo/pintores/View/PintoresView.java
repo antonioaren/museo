@@ -182,7 +182,7 @@ public class PintoresView extends AndroidScreenView implements I_PintoresView {
 
             DetailData data = getItem(position);
             TextView titleView = (TextView) rowView.findViewById(R.id.lbl_title);
-            titleView.setText(data.toString());
+            titleView.setText(data.getLabel());
             return rowView;
         }
     }

@@ -2,6 +2,7 @@ package com.hotmail.antonioaren.museo.cuadros.Detail.Presenter;
 
 import com.hotmail.antonioaren.museo.cuadros.Detail.View.I_CuadroDetailsView;
 import com.hotmail.antonioaren.museo.cuadros.Detail.Model.I_CuadroDetailsModel;
+import com.hotmail.antonioaren.museo.cuadros.Detail.data.DetailData;
 import es.ulpgc.eite.framework.android.AndroidScreenPresenter;
 import es.ulpgc.eite.framework.core.screen.I_ScreenState;
 import es.ulpgc.eite.framework.core.screen.I_ScreenView;
@@ -80,7 +81,11 @@ public class CuadroDetailPresenter extends AndroidScreenPresenter implements I_C
     @Override
     public void createScreen() {
         debug ("CreateScreen");
-        getCuadrosDetailView().SetDetailLayout();
+        //ponemos el Layout
+        getCuadrosDetailView().setCuadrosDetailLayout();
+
+        //Ponemos los datos
+        getCuadroDetailsModel().setData(new DetailData());
 
 
     }
@@ -92,8 +97,8 @@ public class CuadroDetailPresenter extends AndroidScreenPresenter implements I_C
 
     @Override
     public void resumeScreen() {
-        getCuadrosDetailView().SetDetailLayout();
-
+        //detalle de cuadros/datos/obtener desde el modelo/metodo getData
+        getCuadrosDetailView().setDetailData(getCuadroDetailsModel().getData());
 
     }
 

@@ -1,5 +1,6 @@
 package com.hotmail.antonioaren.museo.pintores.Presenter;
 
+import com.hotmail.antonioaren.museo.mediator.MuseoMediatorCode;
 import com.hotmail.antonioaren.museo.pintores.Model.I_PintoresModel;
 import com.hotmail.antonioaren.museo.pintores.View.I_PintoresView;
 import es.ulpgc.eite.framework.android.AndroidScreenPresenter;
@@ -29,6 +30,8 @@ public class PintoresPresenter extends AndroidScreenPresenter implements I_Pinto
 
         debug("setListPosition","position",position);
         debug("setListPosition","Data",getPintoresModel().getData());
+
+        startNextScreenWithFinish(MuseoMediatorCode.CLICK, false);
     }
 
     @Override

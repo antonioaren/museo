@@ -1,5 +1,8 @@
 package com.hotmail.antonioaren.museo.mediator;
 
+import com.hotmail.antonioaren.museo.cuadros.Detail.Model.CuadroDetailModel;
+import com.hotmail.antonioaren.museo.cuadros.Detail.Presenter.CuadroDetailPresenter;
+import com.hotmail.antonioaren.museo.cuadros.Detail.View.CuadroDetailView;
 import com.hotmail.antonioaren.museo.cuadros.Master.Model.CuadrosModel;
 import com.hotmail.antonioaren.museo.cuadros.Master.Presenter.CuadrosPresenter;
 import com.hotmail.antonioaren.museo.cuadros.Master.View.CuadrosView;
@@ -35,14 +38,18 @@ public class MuseoMediatorConfig extends MediatorConfig {
         getScreens().add(new MediatorScreen(PintoresView.class,
                 PintoresPresenter.class, PintoresModel.class, DatabaseMuseo.class));
 
-        getScreens().add(new MediatorScreen(CuadrosView.class,
-                CuadrosPresenter.class, CuadrosModel.class, null));
+        getScreens().add(new MediatorScreen(CuadroDetailView.class,
+                CuadroDetailPresenter.class, CuadroDetailModel.class, DatabaseMuseo.class));
+
+
+//        getScreens().add(new MediatorScreen(CuadrosView.class,
+//                CuadrosPresenter.class, CuadrosModel.class, null));
     }
 
 
     private void setMuseoTransitionCollection() {
         getTransitions().add(new MediatorTransition(PintoresView.class,
-                CuadrosView.class, MuseoMediatorCode.CLICK));
+                CuadroDetailView.class, MuseoMediatorCode.CLICK));
     }
 
 

@@ -2,5 +2,6 @@
 <resources>
     <string name="app_name">museo</string>
     <string name="data_label">Data label</string>
+    <string name="data">Data Label</string>
 
 </resources>
