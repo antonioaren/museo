@@ -12,6 +12,7 @@ import java.util.List;
  * Created by PedroAntonio on 14/03/2016.
  */
 public class PintoresModel extends AndroidScreenModel implements I_PintoresModel {
+
     private  int position;
 
     private I_PintoresPresenter getPintoresPresenter(){
@@ -30,7 +31,7 @@ public class PintoresModel extends AndroidScreenModel implements I_PintoresModel
 
     @Override
     public void setPosition(int pos) {
-        this.position = pos;
+        position = pos;
     }
 
     @Override

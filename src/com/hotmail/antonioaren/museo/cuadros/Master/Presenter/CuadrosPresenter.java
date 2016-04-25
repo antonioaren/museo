@@ -38,18 +38,30 @@ public class CuadrosPresenter extends AndroidScreenPresenter implements I_Cuadro
 
     }
 
+    //Estados----------------
+
     @Override
-    public void setScreenState(Class<? extends I_ScreenView> aClass, int i, I_ScreenState i_screenState) {
+    public void setScreenState(
+            Class<? extends I_ScreenView> view, int code, I_ScreenState state) {
+
+        debug("setScreenState", "view", view.getSimpleName() );
+        debug("setScreenState", "code", code );
+
+
 
     }
 
     @Override
     public I_ScreenState getScreenState() {
+        debug("getScreenState" );
+
+
         return null;
     }
 
     @Override
-    public I_ScreenState getNextState(Class<? extends I_ScreenView> aClass, int i) {
+    public I_ScreenState getNextState(
+            Class<? extends I_ScreenView> view, int code) {
         return null;
     }
 }

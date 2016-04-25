@@ -1,8 +1,10 @@
 package com.hotmail.antonioaren.museo.pintores.Presenter;
 
+import com.hotmail.antonioaren.museo.cuadros.Detail.state.CuadroDetailState;
 import com.hotmail.antonioaren.museo.mediator.MuseoMediatorCode;
 import com.hotmail.antonioaren.museo.pintores.Model.I_PintoresModel;
 import com.hotmail.antonioaren.museo.pintores.View.I_PintoresView;
+import com.hotmail.antonioaren.museo.pintores.state.PintoresState;
 import es.ulpgc.eite.framework.android.AndroidScreenPresenter;
 import es.ulpgc.eite.framework.core.screen.I_ScreenState;
 import es.ulpgc.eite.framework.core.screen.I_ScreenView;
@@ -63,19 +65,45 @@ public class PintoresPresenter extends AndroidScreenPresenter implements I_Pinto
 
     }
 
-    @Override
-    public void setScreenState(Class<? extends I_ScreenView> aClass, int i, I_ScreenState i_screenState) {
 
+// Estados ------------------
+    @Override
+    public void setScreenState(
+            Class<? extends I_ScreenView> view, int code, I_ScreenState state) {
+
+        debug("setScreenState", "view", view.getSimpleName());
+        debug("setScreenState", "code", code);
+
+        //Poner el estado obtenido.
+        //Hacemos un objeto de PintoresState llamado _state.
+        //Luego ponemos la posicion en la que está desde el modelo.
+        if (state != null) {
+            PintoresState _state = (PintoresState) state;
+            getPintoresModel().setPosition(_state.getPosition());
+        }
     }
 
     @Override
     public I_ScreenState getScreenState() {
-        return null;
+
+        //obtener el estado de la pantalla.
+        debug("getScreenState");
+
+        //Obtener el estado de Pintores
+        PintoresState state = new PintoresState(getPintoresModel().getPosition());
+        return state;
     }
 
     @Override
-    public I_ScreenState getNextState(Class<? extends I_ScreenView> aClass, int i) {
-        return null;
+    public I_ScreenState getNextState(
+            Class<? extends I_ScreenView> view, int code) {
+        debug("getNextState", "view", view.getSimpleName());
+        debug("getNextState", "code", code);
+
+        //Obtener estado de CuadrosDetail
+        CuadroDetailState state = new CuadroDetailState(getPintoresModel().getData());
+
+        return state;
     }
 
 

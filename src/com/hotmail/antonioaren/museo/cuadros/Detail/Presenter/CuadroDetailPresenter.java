@@ -3,6 +3,7 @@ package com.hotmail.antonioaren.museo.cuadros.Detail.Presenter;
 import com.hotmail.antonioaren.museo.cuadros.Detail.View.I_CuadroDetailsView;
 import com.hotmail.antonioaren.museo.cuadros.Detail.Model.I_CuadroDetailsModel;
 import com.hotmail.antonioaren.museo.cuadros.Detail.data.DetailData;
+import com.hotmail.antonioaren.museo.cuadros.Detail.state.CuadroDetailState;
 import es.ulpgc.eite.framework.android.AndroidScreenPresenter;
 import es.ulpgc.eite.framework.core.screen.I_ScreenState;
 import es.ulpgc.eite.framework.core.screen.I_ScreenView;
@@ -113,17 +114,30 @@ public class CuadroDetailPresenter extends AndroidScreenPresenter implements I_C
     }
 
     @Override
-    public void setScreenState(Class<? extends I_ScreenView> aClass, int i, I_ScreenState i_screenState) {
+    public void setScreenState(
+            Class<? extends I_ScreenView> view, int code, I_ScreenState state) {
+        debug("setScreenState", "view", view.getSimpleName());
+        debug("setScreenState", "code", code);
+
+        if(state!= null){
+            CuadroDetailState _state = (CuadroDetailState) state;
+            getCuadroDetailsModel().setData(_state.getData());
+        }
+
 
     }
 
     @Override
     public I_ScreenState getScreenState() {
-        return null;
+
+        CuadroDetailState state = new CuadroDetailState(getCuadroDetailsModel().getData());
+        return state;
+
     }
 
     @Override
-    public I_ScreenState getNextState(Class<? extends I_ScreenView> aClass, int i) {
+    public I_ScreenState getNextState(Class<? extends I_ScreenView> view, int code) {
+        //En este caso este estado si no tiene mas pantallas no se haria nada. No hay Next State
         return null;
     }
 }
