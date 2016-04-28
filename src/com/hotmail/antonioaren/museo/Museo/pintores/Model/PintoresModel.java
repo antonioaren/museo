@@ -64,9 +64,6 @@ public class PintoresModel extends AndroidScreenModel implements I_PintoresModel
     @Override
     public void removeData(){
         debug("removeData", "collection", getCollection());
-
         getMuseoDatabase().deleteData(getData().getId());
-
-
     }
 }

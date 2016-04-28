@@ -31,11 +31,9 @@ public class CuadroDetailPresenter extends AndroidScreenPresenter implements I_C
         debug("deleteData");
 
 //      CuadroDetailState state = new CuadroDetailState(getCuadroDetailsModel().getData());
-
-//      notifyScreenObservers((I_ScreenObservable) this, MuseoMediatorCode.DELETE, state);
+//      notifyScreenObservers((I_ScreenObservable) this, MuseoMediatorCode.DELETE, state)
 
         notifyScreenObservers((I_ScreenObservable) this, MuseoMediatorCode.DELETE, null);
-        finishScreen();
     }
 
     @Override
@@ -53,6 +51,9 @@ public class CuadroDetailPresenter extends AndroidScreenPresenter implements I_C
 
     @Override
     public void backScreen() {
+        debug("backScreen");
+
+        notifyScreenObservers((I_ScreenObservable) this, MuseoMediatorCode.BACK, null);
 
     }
 
@@ -66,11 +67,13 @@ public class CuadroDetailPresenter extends AndroidScreenPresenter implements I_C
 
     @Override
     public void pauseScreen() {
+        debug("pauseScreen");
 
     }
 
     @Override
     public void rotateScreen() {
+        debug("rotateScreen");
 
     }
 
@@ -109,7 +112,7 @@ public class CuadroDetailPresenter extends AndroidScreenPresenter implements I_C
         debug("updateObservableState", "view", view.getSimpleName());
         debug("updateObservableState", "code", code);
 
-
+        finishScreen();
 
     }
 }

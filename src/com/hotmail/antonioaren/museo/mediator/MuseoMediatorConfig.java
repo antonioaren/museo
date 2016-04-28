@@ -46,7 +46,7 @@ public class MuseoMediatorConfig extends MediatorConfig {
 
     private void setMuseoTransitionCollection() {
         getTransitions().add(new MediatorTransition(PintoresView.class,
-                CuadroDetailView.class, MuseoMediatorCode.CLICK));
+                CuadroDetailView.class, MuseoMediatorCode.SELECT));
     }
 
 

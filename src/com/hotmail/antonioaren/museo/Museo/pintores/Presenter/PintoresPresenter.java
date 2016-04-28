@@ -1,6 +1,8 @@
 package com.hotmail.antonioaren.museo.Museo.pintores.Presenter;
 
+import com.hotmail.antonioaren.museo.Museo.cuadros.Detail.View.CuadroDetailView;
 import com.hotmail.antonioaren.museo.Museo.cuadros.Detail.state.CuadroDetailState;
+import com.hotmail.antonioaren.museo.Museo.pintores.View.PintoresView;
 import com.hotmail.antonioaren.museo.mediator.MuseoMediatorCode;
 import com.hotmail.antonioaren.museo.Museo.pintores.Model.I_PintoresModel;
 import com.hotmail.antonioaren.museo.Museo.pintores.View.I_PintoresView;
@@ -34,7 +36,8 @@ public class PintoresPresenter extends AndroidScreenPresenter implements I_Pinto
         debug("setListPosition","position",position);
         debug("setListPosition","Data",getPintoresModel().getData());
 
-        startNextScreenWithFinish(MuseoMediatorCode.CLICK, false);
+        //startNextScreenWithFinish(MuseoMediatorCode.SELECT, false);
+        startNextScreenWithObserver(this, MuseoMediatorCode.SELECT);
     }
 
     @Override
@@ -46,11 +49,14 @@ public class PintoresPresenter extends AndroidScreenPresenter implements I_Pinto
 
     @Override
     public void backScreen() {
+        debug("backScreen");
+
 
     }
 
     @Override
     public void resumeScreen() {
+        debug("resumeScreen");
         getPintoresView().setPintoresCollection(getPintoresModel().getCollection());
         getPintoresView().setListPosition(getPintoresModel().getPosition());
 
@@ -58,14 +64,13 @@ public class PintoresPresenter extends AndroidScreenPresenter implements I_Pinto
 
     @Override
     public void pauseScreen() {
-
+        debug("pauseScreen");
     }
 
     @Override
     public void rotateScreen() {
-
+        debug("rotateScreen");
     }
-
 
 // Estados ------------------
     @Override
@@ -80,8 +85,12 @@ public class PintoresPresenter extends AndroidScreenPresenter implements I_Pinto
         //Luego ponemos la posicion en la que está desde el modelo.
 
         if (state != null) {
-            PintoresState _state = (PintoresState) state;
-            getPintoresModel().setPosition(_state.getPosition());
+
+            if (view.equals(PintoresView.class) && code == MuseoMediatorCode.NULL) {
+
+                PintoresState _state = (PintoresState) state;
+                getPintoresModel().setPosition(_state.getPosition());
+            }
         }
     }
 
@@ -114,12 +123,31 @@ public class PintoresPresenter extends AndroidScreenPresenter implements I_Pinto
 
         debug("updateObserverState", "view", view.getSimpleName());
         debug("updateObserverState", "code", code);
-        debug("updateObserverState", "position", getPintoresModel().getPosition());
+
+        if (view.equals(CuadroDetailView.class)
+                && code == MuseoMediatorCode.DELETE) {
+
+            debug("updateObserverState", "position", getPintoresModel().getPosition());
+            getPintoresModel().removeData();
+            resumeScreen();
+
+            return new CuadroDetailState();
+
+//            PintoresState _state = (PintoresState) state;
+//            getPintoresModel().setPosition(_state.getPosition());
+        }
+
+        if (view.equals(CuadroDetailView.class)
+                && code == MuseoMediatorCode.BACK){//// TODO: 28/04/2016 
+
+            return null;
+        }
+
+
 
         //CuadroDetailState _state = (CuadroDetailState) state;
-
-        getPintoresModel().removeData();
-        resumeScreen();
+//        getPintoresModel().removeData();
+//        resumeScreen();
 
         return null;
     }
