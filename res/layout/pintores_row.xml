@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              style="@style/WhiteStyle">
 
     <LinearLayout
             android:orientation="horizontal"
@@ -12,8 +13,12 @@
 
         <TextView android:id="@+id/lbl_title"
                   android:text="@string/data_label"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"/>
+                  android:textSize="30dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"/>
+
+                  <!--style="@style/RedStyle"-->
+
 
     </LinearLayout>
 </LinearLayout>

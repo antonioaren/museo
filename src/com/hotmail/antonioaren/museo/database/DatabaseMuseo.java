@@ -2,7 +2,7 @@ package com.hotmail.antonioaren.museo.database;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.SystemClock;
-import com.hotmail.antonioaren.museo.cuadros.Detail.data.DetailData;
+import com.hotmail.antonioaren.museo.Museo.cuadros.Detail.data.DetailData;
 import es.ulpgc.eite.framework.android.AndroidScreenDatabase;
 import es.ulpgc.eite.framework.android.I_AndroidMediatorSingleton;
 import com.hotmail.antonioaren.museo.R;
@@ -34,7 +34,6 @@ public class DatabaseMuseo
         detailDao = new DetailDao(new DetailTable(), database);
     }
 
-
     private I_AndroidMediatorSingleton getPlatformMediator() {
         return (I_AndroidMediatorSingleton) getMediator();
     }
@@ -58,8 +57,6 @@ public class DatabaseMuseo
 	    openDatabase();
 	}
 
-
-
     private SQLiteDatabase getDatabase() {
    		return database;
    	}
@@ -67,8 +64,6 @@ public class DatabaseMuseo
    	private void setDatabase(SQLiteDatabase db) {
    		database = db;
    	}
-
-
 
    	private DetailDao getDataDao() {
    		return detailDao;
@@ -79,13 +74,10 @@ public class DatabaseMuseo
    	}
 
 
-
     @Override
 	public DetailData getData(Long dataId) {
         return getDataDao().get(dataId);
 	}
-
-
 
     @Override
     public DetailData getDataBy(DatabaseClauseArg[] args){
@@ -102,7 +94,6 @@ public class DatabaseMuseo
 
         return getDataDao().getByClause(clause, null);
    	}
-
 
     @Override
     public List<DetailData> getDataListBy(DatabaseClauseArg[] args){
@@ -125,9 +116,7 @@ public class DatabaseMuseo
 	public List<DetailData> getDataList(){
 
         return getDataDao().getAllbyClause(null, null, null, null, "id");
-	}	
-
-
+	}
     
     @Override
     public boolean deleteDataList(){
@@ -154,7 +143,6 @@ public class DatabaseMuseo
 		return result;
 	}
 
-
     @Override
 	public Long saveData(DetailData data){
 
@@ -176,24 +164,19 @@ public class DatabaseMuseo
 		return result;
 	}
 
-
     @Override
     public boolean updateData(DetailData data) {
         boolean result = false;
         try {
-
             getDatabase().beginTransaction();
             getDataDao().update(data, data.getId());
             getDatabase().setTransactionSuccessful();
             result = true;
 
         } catch (Exception e) {
-
         }
+
         getDatabase().endTransaction();
         return result;
     }
-
-
-
 }

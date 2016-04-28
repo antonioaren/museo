@@ -7,18 +7,16 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:weightSum="1">
-        <ImageView
-                android:layout_width="220dp"
-                android:layout_height="220dp"
-                android:id="@+id/imageView"
-                android:layout_alignParentStart="true"
-                android:layout_gravity="top|right"/>
+            android:layout_height="wrap_content"
+            android:weightSum="1">
         <EditText
-                android:layout_width="match_parent"
-                android:layout_height="99dp"
+                android:layout_width="381dp"
+                android:layout_height="129dp"
+
                 android:id="@+id/editText"
-                android:text="hola" android:layout_below="@+id/imageView" android:layout_alignParentEnd="true"/>
+                android:text="Aquí ira algo de info del pintor"
+                android:layout_below="@+id/imageView"
+                android:layout_alignParentEnd="true"/>
     </LinearLayout>
     <GridView
             android:layout_width="wrap_content"

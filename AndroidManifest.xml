@@ -8,7 +8,7 @@
             android:allowBackup="true"
             android:name=".mediator.MuseoMediatorSingleton">
 
-        <activity android:name=".pintores.View.PintoresView">
+        <activity android:name=".Museo.pintores.View.PintoresView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -16,9 +16,10 @@
 
         </activity>
 
-        <activity android:name=".cuadros.Master.View.CuadrosView"/>
+        <activity android:name=".Museo.cuadros.Master.View.CuadrosView"/>
 
-        <activity android:name=".cuadros.Detail.View.CuadroDetailView"/>
+        <activity android:name=".Museo.cuadros.Detail.View.CuadroDetailView"/>
+
 
 
 
